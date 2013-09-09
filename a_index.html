@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" ng-app >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./css/tmp.css" rel="stylesheet">
+    <script src='./js/angular.js'></script>
+
+  </head>
+
+<body style='height: 100%'>
+<div class='row'>
+    <div class='gradient-example col-xs-12 col-sm-12  col-md-12 box-shadow-default' id='v-gradient'>
+        <div class='container'>
+	    <img class='img-responsive'  src='./images/logo.png' style='margin-top: 10px'>
+ 	</div>
+    </div>
+</div>
+
+<div class="navbar navbar-inverse box-shadow-default">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" >San Francisco Food Delivery</a>
+		</div>
+		<div class="collapse navbar-collapse">
+	 		<ul class="nav navbar-nav navbar-right">
+            			<li class="active"><a href="./">Search by Address</a></li>
+            			<li><a href="../navbar-static-top/">The Hunger App</a></li>
+           	 		<li><a href="../navbar-fixed-top/">My Account</a></li>
+          		</ul>
+		</div>
+	
+	</div>
+</div>
+
+<div class='row'>
+    <div class='col-xs-12 box-shadow-default' >
+        <div class="background_center">
+	    <div class='container'>
+	            <div class='col-xs-4 background_center_box' >Where are you? (required)<br>
+			
+	                <div class='btn-group'>
+		            <button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown' >Left
+		                <span class='caret'></span>
+		            </button>
+		            <ul class='dropdown-menu' role='menu' >
+		                <li><a href='#'>Hello</a></li>
+		            </ul>
+	                </div>
+
+		    </div>
+	            <div class='col-xs-4 background_center_box' >What are you hungry for (optional)<br>
+			
+		        <div class='input-group'>
+		            <span class='input-group-addon'>I</span>
+		            <input type='text' class='form-control' placeholder='entry'>
+		        </div>
+			
+		    </div>
+	            <div class='col-xs-4 background_center_box' > &nbsp;<br>
+		        <button type='button' class='btn btn-defualt'>
+			    Find a Restaurant <span class='glyphicon glyphicon-star'></span>
+		        </button>	
+		    </div>
+	        </div>
+	    </div>
+	</div>
+    </div>
+</div>
+
+
+<div class='row interactive_bar box-shadow-default'>
+    <div class='col-md-12' >
+	<div class='container' style='margin-top: 10px;' >
+		<div class='input-group interactive_bar_checks' ng-controller='OptionsController'> 
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.delivery' > Delivery</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.pickup' > Pick Up</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.fdelivery' > Free Delivery</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.opennow' > Open Now</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.hcoupons' > Has Coupons</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.acoupons' > Accepts Coupons</div>
+		    <div class='checkbox_elm' > <input ng-change='showChange()' type='checkbox' ng-model='checks.hasnotes' > Has Notes</div>
+		</div>	
+	    </div>	
+	</div>
+</div>
+
+<div style='background-image: url(./images/bg.jpg);' >
+<br>
+<div style='background-color: #ffffff' >
+<div class='container restaurant_block'  ng-controller='RestaurantController' >
+    <div class='row restaurant_block' >
+	<div class='col-md-10' style='padding: 10px 8px'>
+	    <img src='./images/icon_location_orange.png' >
+	    <strong> {{locations.count}}  Restaurants </strong> : {{locations.loc}}
+	</div>
+	<div class='col-md-2'>
+		More
+	</div>
+    </div>
+
+    <div class='row' style='border-left:solid 1px #dddddd; border-right:solid 1px #dddddd;'>
+	<div class='col-md-12' style='background-color: #eeeeee; padding: 10px 10px'>
+	    <div class='row' style='margin-left:10px'>
+		<div class='col-md-8'>
+		    <div class='row' style='height: 148px; margin-top: 10px; background-color:white; border: solid 2px #dddddd' ng-repeat='rest in restaurants' >
+    		        <div ng-include="'./first.html'" ></div>
+		    </div>
+		</div>
+		<div class='col-md-4'> Good Bye</div>
+	    </div>
+	</div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./dist/js/bootstrap.min.js"></script>
+    <script>
+	/*
+    var restServices= angular.module('RInfo', []);
+	
+    function rRouteConfig($routeProvider){
+	$routeProvider.
+	    when('/',{
+		controller: RestaurantController,
+		templateUrl: 'restInfo.html'
+	    }).
+	    otherwise({
+	        redirectTo:'/'
+	    });
+    }
+
+    restServices.config(rRouteConfig);    
+	*/
+    function RestaurantController($scope){
+	$scope.locations={
+	    restCount: 150,
+	    loc: '1097 sneath lane, 94066'
+	};
+        $scope.restaurants=[
+            {
+                name : 'Papa John\'s Pizza',
+                stars: 3,
+                types:'American, Breakfast, Salad, Mexican',
+                delivery: '$2.50',
+                min: '$15.50',
+                distance: '.25miles 45-60mins',
+                image: './images/icon_instagram.png'
+            },
+            {
+                name : 'New York Pizza',
+                stars: 3,
+                types:'American, Breakfast, Itallian',
+                delivery: '$5.50',
+                min: '$10.50',
+                distance: '.3 miles 45-60mins',
+                image: './images/icon_instagram.png'
+            }
+        ];
+    }
+    </script>
+
+    <script>
+
+    function OptionsController($scope){
+	$scope.checks={
+	    delivery: false,
+	    pickup: false,
+	    fdelivery: false,
+	    opennow: false,
+	    hcoupons: false,
+	    acoupons: false,
+	    hnotes: false
+	};
+	$scope.showChange=function(){
+	    console.log("changed");
+        };
+    }
+    </script>
+  </body>
+</html>
